@@ -1,7 +1,7 @@
 
 
 
-const API_URL = 'http://localhost:3000/configuraciones';
+const API_URL = 'https://694a5d641282f890d2d8746a.mockapi.io/configuraciones';
 
 
 const configForm = document.getElementById('configForm');
