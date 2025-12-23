@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main class="container">
+
+        <section class="panel">
+        <h2>Nuevo Configuración</h2>
+        <form id="configForm">
+        <input type="text" id="nombre_del_servidor" name="nombre_del_servidor" placeholder="Nombre del Servidor" required>
+        <input type="text" id="CPU" name="CPU" placeholder="CPU (mínimo 2 núcleos)" required>
+        <input type="text" id="RAM" name="RAM" placeholder="RAM (mínimo 4GB)" required>
+        <input type="text" id="almacenamiento" name="almacenamiento" placeholder="Almacenamiento (SSD/HDD)" required>
+        <button type="submit">Crear Configuración</button>
+         </form>   
+
+
+        </section>
+
+        <section class="panel">
+        <h2>Configuraciones Disponibles</h2>
+        <div id="configList" class="cards"></div>
+        </section>
+
+
+    </main>
+
+
+
+</body>
+</html>

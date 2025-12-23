@@ -1,0 +1,12 @@
+
+{
+  "aliens": [
+    {
+      "id": 1,
+      "nombre_del_servidor": "AlienWare X1",
+      "CPU": "4 núcleos",
+      "RAM": "8GB",
+      "almacenamiento": "Sólido"
+    }
+  ]
+}
