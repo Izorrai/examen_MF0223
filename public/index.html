@@ -7,14 +7,19 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <h1 class="cabecera">TechSpecs Manager</h1>
+
     <main class="container">
 
         <section class="panel">
         <h2>Nuevo Configuración</h2>
         <form id="configForm">
         <input type="text" id="nombre_del_servidor" name="nombre_del_servidor" placeholder="Nombre del Servidor" required>
-        <input type="text" id="CPU" name="CPU" placeholder="CPU (mínimo 2 núcleos)" required>
-        <input type="text" id="RAM" name="RAM" placeholder="RAM (mínimo 4GB)" required>
+        <input type="text" id="CPU" name="CPU" placeholder="CPU" required>
+        <input type="number" id="nucleos" name="nucleos" placeholder="Núcleos (mínimo 2)" min="2" required>
+        <input type="text" id="RAM" name="RAM" placeholder="RAM" required>
+        <input type="number" id="capacidad_RAM" name="capacidad_RAM" placeholder="Capacidad RAM (mínimo 4GB)" min="4" required>
         <input type="text" id="almacenamiento" name="almacenamiento" placeholder="Almacenamiento (SSD/HDD)" required>
         <input type="number" id="presupuesto" name="presupuesto" placeholder="Presupuesto (máx. 700€)" min="0" max="700" step="0.01" required>
         <span id="presupuestoError" style="color: red; display: none; font-size: 0.9em;">El presupuesto no puede superar los 700€</span>
