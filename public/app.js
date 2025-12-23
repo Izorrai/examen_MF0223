@@ -125,17 +125,17 @@ function renderConfigurations(configurations) {
   configList.innerHTML = configurations.map(config => `
     <div class="card">
       <div class="card-header">
-        <h3>${config.nombre_del_servidor}</h3>
+        <h3><i class="fas fa-computer"></i>${config.nombre_del_servidor}</h3>
         
         <button class="delete-btn" data-id="${config.id}">×</button>
 
       </div>
       <div class="card-body">
-        <p><strong>CPU:</strong> ${config.CPU}</p>
-        <p><strong>Núcleos:</strong> ${config.nucleos}</p>
-        <p><strong>RAM:</strong> ${config.RAM}</p>
-        <p><strong>Capacidad RAM:</strong> ${config.capacidad_RAM} GB</p>
-        <p><strong>Almacenamiento:</strong> ${config.almacenamiento}</p>
+        <p><i class="fas fa-microchip"></i><strong>CPU:</strong> ${config.CPU}</p>
+        <p><i class="fas fa-memory"></i><strong>Núcleos:</strong> ${config.nucleos}</p>
+        <p><i class="fas fa-memory"></i><strong>RAM:</strong> ${config.RAM}</p>
+        <p><i class="fas fa-hdd"></i><strong>Capacidad RAM:</strong> ${config.capacidad_RAM} GB</p>
+        <p><i class="fas fa-hdd"></i><strong>Almacenamiento:</strong> ${config.almacenamiento}</p>
         <p><strong>Presupuesto:</strong> ${config.presupuesto} €</p>
       </div>
     </div>
