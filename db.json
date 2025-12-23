@@ -1,12 +1,18 @@
-
 {
-  "aliens": [
+  "configuraciones": [
     {
-      "id": 1,
-      "nombre_del_servidor": "AlienWare X1",
-      "CPU": "4 núcleos",
-      "RAM": "8GB",
-      "almacenamiento": "Sólido"
+      "id": "d2ab",
+      "nombre_del_servidor": "asdasd",
+      "CPU": "2",
+      "RAM": "6",
+      "almacenamiento": "hdd"
+    },
+    {
+      "id": "600e",
+      "nombre_del_servidor": "asdasd",
+      "CPU": "2",
+      "RAM": "6",
+      "almacenamiento": "hdd"
     }
   ]
 }
