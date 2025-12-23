@@ -55,17 +55,17 @@ configForm.addEventListener('submit', async (e) => {
   const presupuesto = Number(presupuestoInput.value);
 
   if (!nombre_del_servidor || !CPU || !RAM || !almacenamiento) {
-    alert('Por favor, complete todos los campos');
+    showAlert('Por favor, complete todos los campos',"warning");
     return;
   }
 
   if (presupuesto <= 0 || presupuesto > 700) {
-    alert('El presupuesto debe estar entre 1€ y 700€');
+    showAlert('El presupuesto debe estar entre 1€ y 700€',"error");
     return;
   }
 
   if (nucleos < 2 || capacidad_RAM < 4) {
-    alert('Revise los valores mínimos de núcleos y RAM');
+    showAlert('Revise los valores mínimos de núcleos y RAM',"error");
     return;
   }
 
@@ -91,11 +91,11 @@ configForm.addEventListener('submit', async (e) => {
     configForm.reset();
     presupuestoError.style.display = 'none';
     await loadConfigurations();
-    alert('Configuración creada exitosamente');
+    showAlert('Configuración creada exitosamente');
 
   } catch (error) {
     console.error(error);
-    alert('Error al crear la configuración');
+    showAlert('Error al crear la configuración');
   }
 });
 
@@ -161,6 +161,18 @@ async function deleteConfiguration(id) {
     await loadConfigurations();
   } catch (error) {
     console.error(error);
-    alert('Error al eliminar la configuración');
+    showAlert('Error al eliminar la configuración',"error");
   }
+}
+
+function showAlert(message, type = 'success') {
+  const alertBox = document.getElementById('alertBox');
+
+  alertBox.textContent = message;
+  alertBox.className = `alert ${type}`;
+  alertBox.classList.remove('hidden');
+
+  setTimeout(() => {
+    alertBox.classList.add('hidden');
+  }, 3000);
 }
