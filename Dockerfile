@@ -1,6 +1,6 @@
 # Etapa de construcción (Build)
 # Construcción del proyecto para producción
-FROM node:24-alpine AS builder
+FROM node:20-alpine AS builder
 
 # Cambiar de directorio actual dentro del contenedor a /app
 WORKDIR /app

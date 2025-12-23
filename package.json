@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "mkdir -p build && cp public/index.html public/app.js public/styles.css build/",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
