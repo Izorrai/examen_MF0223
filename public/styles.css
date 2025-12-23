@@ -44,8 +44,7 @@
 
 
 body {
-  background: url('img/fondo.png') no-repeat center center fixed;
-  background-size: cover;
+ 
   font-family: var(--tipo-letra-texto);
   
   color: var(--color-tinta);

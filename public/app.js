@@ -1,15 +1,28 @@
 
-
-
 const API_URL = 'https://694a5d641282f890d2d8746a.mockapi.io/configuraciones';
 
 
 const configForm = document.getElementById('configForm');
 const configList = document.getElementById('configList');
+const presupuestoInput = document.getElementById('presupuesto');
+const presupuestoError = document.getElementById('presupuestoError');
 
 
 document.addEventListener('DOMContentLoaded', () => {
     loadConfigurations();
+});
+
+
+presupuestoInput.addEventListener('input', () => {
+    const presupuesto = presupuestoInput.value;
+    
+    if (presupuesto > 700) {
+        presupuestoError.style.display = 'block';
+        presupuestoInput.style.borderColor = 'red';
+    } else {
+        presupuestoError.style.display = 'none';
+        presupuestoInput.style.borderColor = '';
+    }
 });
 
 
@@ -21,10 +34,24 @@ configForm.addEventListener('submit', async (e) => {
     const CPU = document.getElementById('CPU').value.trim();
     const RAM = document.getElementById('RAM').value.trim();
     const almacenamiento = document.getElementById('almacenamiento').value.trim();
+    const presupuesto = document.getElementById('presupuesto').value;
     
     
-    if (!nombre_del_servidor || !CPU || !RAM || !almacenamiento) {
+    if (!nombre_del_servidor || !CPU || !RAM || !almacenamiento || !presupuesto) {
         alert('Por favor, complete todos los campos');
+        return;
+    }
+    
+   
+    if (presupuesto > 700) {
+        alert('ERROR: El presupuesto no puede superar los 700€');
+        presupuestoInput.focus();
+        return;
+    }
+    
+    if (presupuesto <= 0) {
+        alert('ERROR: El presupuesto debe ser mayor a 0€');
+        presupuestoInput.focus();
         return;
     }
     
@@ -33,7 +60,8 @@ configForm.addEventListener('submit', async (e) => {
         nombre_del_servidor,
         CPU,
         RAM,
-        almacenamiento
+        almacenamiento,
+        presupuesto: presupuesto + '€'
     };
     
     try {
@@ -52,6 +80,7 @@ configForm.addEventListener('submit', async (e) => {
         
         
         configForm.reset();
+        presupuestoError.style.display = 'none';
         
         
         await loadConfigurations();
@@ -81,8 +110,8 @@ async function loadConfigurations() {
         configList.innerHTML = `
             <p style="text-align: center; color: #e74c3c; padding: 20px;">
                 Error al cargar configuraciones.<br>
-                Asegúrese de que el servidor JSON esté ejecutándose en el puerto 3000.<br>
-                <small>Ejecute: <code>json-server --watch db.json</code></small>
+                Asegúrese de que la URL de la API esté correcta.<br>
+               
             </p>
         `;
     }
@@ -105,12 +134,13 @@ function renderConfigurations(configurations) {
                 <p><strong>CPU:</strong> ${config.CPU}</p>
                 <p><strong>RAM:</strong> ${config.RAM}</p>
                 <p><strong>Almacenamiento:</strong> ${config.almacenamiento}</p>
+                ${config.presupuesto ? `<p><strong>Presupuesto:</strong> ${config.presupuesto}</p>` : ''}
             </div>
         </div>
     `).join('');
 }
 
-
+// Delete a configuration
 async function deleteConfiguration(id) {
     if (!confirm('¿Está seguro de que desea eliminar esta configuración?')) {
         return;
@@ -125,7 +155,7 @@ async function deleteConfiguration(id) {
             throw new Error('Error al eliminar la configuración');
         }
         
-        
+       
         await loadConfigurations();
         
         alert('Configuración eliminada exitosamente');
